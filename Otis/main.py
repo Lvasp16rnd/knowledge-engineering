@@ -1,5 +1,3 @@
-from urllib import response
-from webbrowser import get
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from requests import request
