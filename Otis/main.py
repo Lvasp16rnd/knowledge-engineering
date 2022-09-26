@@ -1,13 +1,17 @@
+#Primeiro importamos a biblioteca
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from requests import request
 
 #treinando o bot
 
+#crriamos o chat em si
 chatbot= ChatBot('Otis')
 
+#criamos o "Treinador"
 trainer= ListTrainer(chatbot)
 
+#Aí colocamos a base para treinarmos o chatbot
 trainer.train([ 
     "Olá, qual é sua duvida ?",
     "Sobre qual assunto se trata",
@@ -37,6 +41,7 @@ trainer.train([
     "de nada pela ajuda",
 ])
 
+#estabelecemos uma condição para a conversa, a reposta e o registro delas
 while True:
     request= input('Você: ')
     response= chatbot.get_response (request)
