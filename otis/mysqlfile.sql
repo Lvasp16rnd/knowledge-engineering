@@ -28,3 +28,21 @@ CREATE TABLE `tag_association` (
   `tag_id` varchar(0) DEFAULT NULL,
   `statement_id` varchar(0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOAD DATA LOCAL INFILE "text.txt" INTO TABLE mytable;
+SELECT @@global.secure_file_priv;
+select 
+    concat("[",
+            group_concat(
+				concat("{id:'", id, "'"),
+                concat("text:'", text, "'"),
+                concat("search_text:'", search_text, "'"),
+                concat("created_at:'", created_at, "'"),
+                concat("in_response_to:'", in_response_to, "'"),
+                concat("search_in_response_to:'", search_in_response_to, "'"),
+                concat(",persona:'", persona, '"}')
+		)
+	,"]") 
+as json from statement 
+into outfile '/home/lvasp16rnd/Downloads/faculdade/2periodo/engenhariaConhecimento/statement.json'
+
